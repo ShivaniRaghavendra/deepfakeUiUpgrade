@@ -1,13 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Gradient background animation */
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply text-gray-800 font-sans;
+  background: linear-gradient(
+    135deg,
+    #E0BBFF, /* soft purple */
+    #FECFEF, /* soft pink */
+    #B2F7EF  /* subtle parrot green */
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Gradient animation */
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Fade-in animation for prediction box */
+@keyframes fadeIn {
+  0% {opacity: 0; transform: translateY(10px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+/* Fade-in */
+@keyframes fadeIn {
+  0% {opacity: 0; transform: translateY(10px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Glitch effect for prediction */
+@keyframes glitch {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, 1px); }
+  80% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+.glitch {
+  animation: glitch 0.3s infinite;
+  color: #ec4899;
+}
+
+/* Pulsing scan animation */
+@keyframes pulseScan {
+  0% { box-shadow: 0 0 0 0 rgba(255,0,128,0.5); }
+  70% { box-shadow: 0 0 0 20px rgba(255,0,128,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,0,128,0); }
+}
+.animate-pulseScan {
+  animation: pulseScan 1.5s infinite;
+  border-radius: 50%;
+}
+
+/* Scanning progress bar */
+@keyframes progress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
